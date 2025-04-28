@@ -24,11 +24,13 @@ export default function ParticlesBackground() {
     const colors = ['#FF385C', '#FF8B6B', '#FFB5A8'];
     
     function resizeCanvas() {
+      if (!canvas) return;
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     }
 
     function createParticles() {
+      if (!canvas) return;
       particles = [];
       const numberOfParticles = Math.floor(window.innerWidth * window.innerHeight / 10000);
       
@@ -45,6 +47,7 @@ export default function ParticlesBackground() {
     }
 
     function drawParticles() {
+      if (!canvas || !ctx) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
       particles.forEach(particle => {
